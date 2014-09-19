@@ -1,1 +1,6 @@
-%h1 This is the front page
+.container-fluid
+  .jumbotron
+    %h1.text-center First Bite
+  .items-container
+    - 10.times do
+      = render 'shared/item_box'
