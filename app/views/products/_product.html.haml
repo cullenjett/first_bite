@@ -8,7 +8,7 @@
     %p.product-description= product.description
 
     %p
-      %span.product-price= product.price
+      %span.product-price= print_price(product.price)
 
     %form.form-inline.product-checkout
       %input.btn.btn-default.add-to-cart-button(type='submit' value='Add to cart')
