@@ -3,7 +3,7 @@
     %p.product-title= product.title
 
     .product-image.center-block
-      %img.img-responsive.img-rounded.center-block(src='/stock_item.jpg')
+      = image_tag product.image.url(:medium), class: 'img-responsive'
 
     %p.product-description= product.description
 
