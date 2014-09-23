@@ -1,0 +1,6 @@
+.container-fluid
+  .jumbotron
+    %h1.text-center First Bite
+  .products-containter
+    - @products.each do |product|
+      = render 'product', product: product
