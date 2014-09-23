@@ -1,6 +1,8 @@
 .container-fluid
   .jumbotron
     %h1.text-center First Bite
+    %ul.admin-nav
+      %li= link_to 'Add New Product', new_product_path
   .products-containter
     - @products.each do |product|
       = render 'product', product: product

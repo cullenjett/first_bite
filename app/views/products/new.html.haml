@@ -1,6 +1,2 @@
-= bootstrap_form_for @product do |f|
-  = f.text_field :title
-  = f.text_area :description
-  = f.text_field :price
-  = f.form_group do
-    = f.submit 'Create Product'
+%h1 New Product
+= render 'form', button_content: 'Create Product'

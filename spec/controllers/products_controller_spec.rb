@@ -43,4 +43,20 @@ RSpec.describe ProductsController, :type => :controller do
       end
     end
   end#POST create
+
+  describe 'PUT update' do
+    context 'with valid attributes' do
+      it 'redirects to the products index page' do
+        product = Fabricate(:product, title: 'original title')
+        put :update, { id: product.to_param, product: {title: 'new title'} }
+        expect(response).to redirect_to products_path
+      end
+
+      it 'updates the product' do
+        product = Fabricate(:product, title: 'original title')
+        put :update, { id: product.to_param, product: {title: 'new title'} }
+        expect(product.reload.title).to eq('new title')
+      end
+    end
+  end#PUT update
 end

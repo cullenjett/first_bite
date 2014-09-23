@@ -19,6 +19,21 @@ class ProductsController < ApplicationController
     end
   end
 
+  def edit
+    @product = Product.find(params[:id])
+  end
+
+  def update
+    @product = Product.find(params[:id])
+    if @product.update(product_params)
+      flash[:success] = "The product was successfully updated."
+      redirect_to products_path
+    else
+      flash[:danger] = "Oops, something went wrong. Please fix the errors below."
+      render :edit
+    end
+  end
+
   private
 
   def product_params
