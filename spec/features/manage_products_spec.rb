@@ -29,7 +29,7 @@ feature 'managing products' do
     attach_file('Image', 'app/assets/images/sample_product.jpg')
     click_button 'Create Product'
 
-    expect(page).to have_selector("img")
+    expect(page).to have_css("div(class='product-image') img")
   end
 
   private

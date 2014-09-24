@@ -5,6 +5,7 @@ gem 'sqlite3'
 gem 'bcrypt'
 gem 'unicorn'
 gem 'paperclip'
+gem 'aws-sdk'
 gem 'figaro'
 
 gem 'haml-rails'
