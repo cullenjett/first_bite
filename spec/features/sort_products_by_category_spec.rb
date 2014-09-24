@@ -5,7 +5,7 @@ feature 'sort products by category' do
   scenario 'show only a specific category' do
     create_products_with_categories
     visit root_path
-    click_link("Entree")
+    click_button("Entree")
     expect(page).to have_content('hamburger')
     expect(page).not_to have_content('ice cream')
   end
