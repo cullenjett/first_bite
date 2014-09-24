@@ -1,4 +1,7 @@
 class Product < ActiveRecord::Base
+  has_many :product_categories
+  has_many :categories, through: :product_categories
+
   has_attached_file :image, styles: { medium: "300x300>", thumb: "100x100>" },
                             default_url: "stock_product.jpg"
 
