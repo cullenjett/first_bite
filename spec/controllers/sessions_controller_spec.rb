@@ -42,4 +42,24 @@ RSpec.describe SessionsController, type: :controller do
       end
     end
   end#POST create
+
+  describe 'GET destroy' do
+    it 'removes the user from the session' do
+      session[:user_id] = Fabricate(:user).id
+      get :destroy
+      expect(session[:user_id]).to be nil
+    end
+
+    it 'redirects to the products path' do
+      session[:user_id] = Fabricate(:user).id
+      get :destroy
+      expect(response).to redirect_to products_path
+    end
+
+    it 'sets the flash[:info] message' do
+      session[:user_id] = Fabricate(:user).id
+      get :destroy
+      expect(flash[:info]).to be_present
+    end
+  end#GET destroy
 end
