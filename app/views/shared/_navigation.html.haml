@@ -14,16 +14,6 @@
         %li
           %button.btn.btn-default.navbar-btn{href: "#"} Your Cart (2) -- $9.99
         %li
-          %a{href: "#"} Register
+          = link_to 'Register', register_path
         %li
-          %button.btn.btn-default.navbar-btn{href: "#"} Sign In
-
--# %nav.navbar(role='navigation')
--#   .contanier-fluid
--#     %ul.nav.nav-pills
--#       %li
--#         %a.btn(href="#")Your Cart(0) - $9.99
--#       %li
--#         %a.btn(href="#")Sign In
--#       %li
--#         %a.btn(href)Register
+          = button_to 'Sign In', sign_in_path, method: :get, class: 'navbar-btn btn btn-default'

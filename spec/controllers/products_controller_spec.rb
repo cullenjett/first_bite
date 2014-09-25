@@ -11,7 +11,7 @@ RSpec.describe ProductsController, :type => :controller do
   describe 'POST create' do
     context 'with valid attributes' do
       it 'redirects to the new product page' do
-        post :create, product:Fabricate.attributes_for(:product)
+        post :create, product: Fabricate.attributes_for(:product)
         expect(response).to redirect_to(new_product_path)
       end
 

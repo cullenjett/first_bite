@@ -4,4 +4,10 @@ Rails.application.routes.draw do
 
   resources :products, only: [:index, :new, :create, :edit, :update]
   resources :categories, only: [:show]
+
+  resources :users, only: [:create]
+  get '/register', to: 'users#new'
+
+  get '/sign_in', to: 'sessions#new'
+  post '/sign_in', to: 'sessions#create'
 end
