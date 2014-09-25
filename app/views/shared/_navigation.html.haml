@@ -13,7 +13,16 @@
       %ul.nav.navbar-nav.navbar-right
         %li
           %button.btn.btn-default.navbar-btn{href: "#"} Your Cart (2) -- $9.99
-        %li
-          = link_to 'Register', register_path
-        %li
-          = button_to 'Sign In', sign_in_path, method: :get, class: 'navbar-btn btn btn-default'
+        - if signed_in?
+          %li.dropdown
+            %a.dropdown-toggle{"data-toggle" => "dropdown", href: "#"}
+              = "#{current_user.name}"
+              %b.caret
+            %ul.dropdown-menu
+              %li
+                = link_to 'Sign Out'
+        - else
+          %li
+            = link_to 'Register', register_path
+          %li
+            = button_to 'Sign In', sign_in_path, method: :get, class: 'navbar-btn btn btn-default'
