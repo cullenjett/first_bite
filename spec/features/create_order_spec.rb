@@ -2,11 +2,15 @@ require 'rails_helper'
 require 'capybara/rails'
 
 feature 'create a new order' do
-  scenario 'user adds an item to his cart' do
-    pending
-    apple = Fabricate(:product)
-    banana = Fabricate(:product)
+  scenario 'unathenticated user adds an item to his cart' do
+    apple = Fabricate(:product, title: 'apple')
+    banana = Fabricate(:product, title: 'banana')
     visit root_path
-    click_button 'Add to cart'
+    first(:button, 'Add to cart').click
+    within('.main-content') do
+      expect(page).to have_content('Your Cart')
+      expect(page).to have_content(apple.title)
+      expect(page).not_to have_content(banana.title)
+    end
   end
 end

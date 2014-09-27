@@ -10,7 +10,6 @@
     %p
       %span.product-price= print_price(product.price)
 
-    %form.form-inline.product-checkout
-      %input.btn.btn-default.add-to-cart-button(type='submit' value='Add to cart')
+    = button_to 'Add to cart', order_items_path(product_id: product.id), class: 'btn btn-default'
 
     = link_to "Edit", edit_product_path(product)
