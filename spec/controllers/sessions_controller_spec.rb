@@ -50,6 +50,12 @@ RSpec.describe SessionsController, type: :controller do
       expect(session[:user_id]).to be nil
     end
 
+    it 'removes the current order from the session' do
+      session[:order_id] = 1
+      get :destroy
+      expect(session[:order_id]).to be nil
+    end
+
     it 'redirects to the products path' do
       session[:user_id] = Fabricate(:user).id
       get :destroy

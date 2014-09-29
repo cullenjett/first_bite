@@ -16,6 +16,7 @@ class SessionsController < ApplicationController
 
   def destroy
     session[:user_id] = nil
+    session[:order_id] = nil
     flash[:info] = "You have successfully signed out"
     redirect_to products_path
   end
