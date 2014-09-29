@@ -22,5 +22,4 @@ class ApplicationController < ActionController::Base
       @order.save!
       session[:order_id] = @order.id
     end
-  end
 end

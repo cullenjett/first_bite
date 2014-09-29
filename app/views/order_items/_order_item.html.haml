@@ -1,3 +1,8 @@
-.order-item
-  = image_tag order_item.product.image.url(:thumb), class: 'img-responsive'
-  = order_item.product.title
+.row
+  .col-sm-8
+    .order-item
+      .col-sm-1
+        = image_tag order_item.product.image.url(:thumb), class: 'img-responsive'
+      = order_item.product.title
+      = order_item.product.price
+      = "(#{order_item.quantity})"

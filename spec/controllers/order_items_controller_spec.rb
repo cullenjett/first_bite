@@ -8,7 +8,7 @@ RSpec.describe OrderItemsController, type: :controller do
       expect(response).to redirect_to order_path(Order.find(session[:order_id]))
     end
 
-    it 'sets creates a new order item' do
+    it 'creates a new order item' do
       product = Fabricate(:product)
       post :create, product_id: product.id
       expect(OrderItem.all.count).to eq(1)
