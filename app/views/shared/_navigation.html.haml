@@ -11,8 +11,10 @@
     / Collect the nav links, forms, and other content for toggling
     #bs-example-navbar-collapse-1.collapse.navbar-collapse
       %ul.nav.navbar-nav.navbar-right
-        %li
-          %button.btn.btn-default.navbar-btn{href: "#"} Your Cart (2) -- $9.99
+        - if current_order
+          %li
+            = button_to "Your Cart (#{product_count(current_order)})", order_path(current_order), method: :get, class: 'btn btn-default navbar-btn'
+          -# %button.btn.btn-default.navbar-btn{href: "#"} Your Cart (2) -- $9.99
         - if signed_in?
           %li.dropdown
             %a.dropdown-toggle{"data-toggle" => "dropdown", href: "#"}
