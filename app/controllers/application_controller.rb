@@ -16,10 +16,9 @@ class ApplicationController < ActionController::Base
   end
 
   def load_order
-    @order = Order.create_with(status: "unsubmitted", user_id: session[:user_id]).find_or_initialize_by(id: session[:order_id])
-
-    if @order.new_record?
-      @order.save!
-      session[:order_id] = @order.id
-    end
+    @order = Order.find(session[:order_id])
+  rescue ActiveRecord::RecordNotFound
+    @order = Order.create(user_id: current_user, status: 'unsubmitted')
+    session[:order_id] = @order.id
+  end
 end

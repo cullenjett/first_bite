@@ -2,6 +2,7 @@ Product.destroy_all
 Category.destroy_all
 Order.destroy_all
 OrderItem.destroy_all
+User.destroy_all
 
 10.times do
   Product.create(title: Faker::Commerce.product_name,
