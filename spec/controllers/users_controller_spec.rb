@@ -14,6 +14,11 @@ RSpec.describe UsersController, :type => :controller do
         expect(User.count).to eq(1)
       end
 
+      it 'signs in the new user' do
+        post :create, user: Fabricate.attributes_for(:user, id: 1)
+        expect(session[:user_id]).to eq(1)
+      end
+
       it 'sets the flash[:success] message' do
         post :create, user: Fabricate.attributes_for(:user)
         expect(flash[:success]).to be_present
