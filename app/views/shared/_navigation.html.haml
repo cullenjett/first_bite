@@ -14,7 +14,10 @@
         - if current_order
           %li
             = button_to "Your Cart (#{product_count(current_order)})", order_path(current_order), method: :get, class: 'btn btn-default navbar-btn'
-          -# %button.btn.btn-default.navbar-btn{href: "#"} Your Cart (2) -- $9.99
+        -else
+          %li
+            -# = button_to "Your Cart (0)", '#', class: 'btn btn-default navbar-btn'
+            %button.btn.btn-default.navbar-btn{href: "#"} Your Cart (0)
         - if signed_in?
           %li.dropdown
             %a.dropdown-toggle{"data-toggle" => "dropdown", href: "#"}

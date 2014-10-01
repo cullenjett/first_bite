@@ -5,8 +5,8 @@ Rails.application.routes.draw do
   resources :products, only: [:index, :new, :create, :edit, :update]
   resources :categories, only: [:show]
 
-  resources :orders, only: [:show]
-  resources :order_items, only: [:create]
+  resources :orders, only: [:show, :update]
+  resources :order_items, only: [:create, :update]
 
   resources :users, only: [:create]
   get '/register', to: 'users#new'

@@ -1,8 +1,14 @@
 .row
-  .col-sm-8
-    .order-item
-      .col-sm-1
-        = image_tag order_item.product.image.url(:thumb), class: 'img-responsive'
-      = order_item.product.title
-      = order_item.product.price
-      = "(#{order_item.quantity})"
+  .col-sm-6
+    %table.table
+      %tr
+        %th{width: '15%'}
+        %th{width: '60%'} Name
+        %th{width: '15%'} Price
+        %th{width: '10%'} Qty
+      %tr
+        %td= image_tag order_item.product.image.url(:thumb), class: 'img-responsive'
+        %td= order_item.product.title
+        %td= order_item.product.price
+        = form_for order_item do |f|
+          %td= f.text_field :quantity
