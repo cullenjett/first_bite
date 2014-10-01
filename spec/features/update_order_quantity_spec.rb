@@ -6,9 +6,8 @@ feature 'User updates the quantity of an item in his cart' do
     product = Fabricate(:product)
     visit root_path
     first(:button, 'Add to cart').click
-    fill_in "order_item_quantity", with: 3
-    click_button 'Update Order'
-    expect(page).to have_content('3')
-    expect(page).not_to have_content('1')
+    fill_in "order_order_items_attributes_0_quantity", with: 3
+    click_button 'Update Cart'
+    expect(page).to have_selector("input[value='3']")
   end
 end
