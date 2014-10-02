@@ -3,7 +3,7 @@
     .row
       .col-sm-8.col-sm-offset-2
         %h1.text-center Your Cart
-        %table.table.order-table
+        %table.table.table-striped.order-table
           %tr
             %th{width: '10%'}
             %th{width: '60%'} Item
@@ -14,7 +14,7 @@
               %td= image_tag order_item.product.image.url(:thumb), class: 'img-responsive'
               %td= order_item.product.title
               = f.fields_for :order_items, order_item do |i|
-                %td= i.text_field :quantity
+                %td= i.text_field :quantity, class: 'form-control'
               %td= order_item.product.price
 
         = f.submit "Empty Cart", name: 'empty_cart', class: 'btn btn-danger'

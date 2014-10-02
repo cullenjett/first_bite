@@ -1,7 +1,10 @@
-%h1 Register
-= bootstrap_form_for @user do |f|
-  = f.text_field :name
-  = f.email_field :email
-  = f.password_field :password
-  = f.form_group do
-    = f.submit 'Sign Up'
+.container-fluid
+  .row
+    .col-sm-4.col-sm-offset-4
+      %h1.text-center Register
+      = bootstrap_form_for @user do |f|
+        = f.text_field :name
+        = f.email_field :email
+        = f.password_field :password
+        = f.form_group do
+          = f.submit 'Sign Up', class: 'btn btn-block btn-primary'

@@ -1,12 +1,11 @@
 .container-fluid
-  .jumbotron
-    %h1.text-center First Bite
-    %ul.admin-nav
-      %li= link_to 'Add New Product', new_product_path
-    %ul.category-nav
-      %li= button_to 'All', products_path, class: 'btn btn-default', method: :get
-      - Category.all.each do |category|
-        %li= button_to category.title, category_path(category), class: 'btn btn-default', method: :get
+  %ul.category-nav.well.text-center
+    %li= link_to 'Add New Product', new_product_path, class: 'btn btn-primary'
+
+    %li= link_to 'All', products_path, class: 'btn btn-warning'
+    - Category.all.each do |category|
+      %li= link_to category.title, category_path(category), class: 'btn btn-warning'
+
   .products-containter
     - @products.each do |product|
       = render 'products/product', product: product
