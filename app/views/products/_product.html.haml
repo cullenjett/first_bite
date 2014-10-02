@@ -3,13 +3,13 @@
     %p.product-title= product.title
 
     .product-image.center-block
-      = image_tag product.image.url(:medium), class: 'img-responsive'
+      = image_tag product.image.url(:medium), class: 'img-responsive img-rounded'
 
     %p.product-description= product.description
 
     %p
       %span.product-price= print_price(product.price)
 
-    = button_to 'Add to cart', order_items_path(product_id: product.id), class: 'btn btn-success'
+    = button_to 'Add to cart', order_items_path(product_id: product.id), class: 'btn btn-success product-button'
 
-    = link_to "Edit Item", edit_product_path(product), class: 'btn btn-primary'
+    = link_to "Edit Item", edit_product_path(product), class: 'btn btn-primary product-button'
