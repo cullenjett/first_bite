@@ -13,7 +13,7 @@
       %ul.nav.navbar-nav.navbar-right
         - if current_order
           %li
-            = button_to "Your Cart (#{product_count(current_order)})", order_path(current_order), method: :get, class: 'btn btn-default navbar-btn'
+            = link_to "Your Cart (#{product_count(current_order)})", order_path(current_order)
         -else
           %li
             -# = button_to "Your Cart (0)", '#', class: 'btn btn-default navbar-btn'

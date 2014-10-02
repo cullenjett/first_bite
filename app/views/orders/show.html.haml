@@ -1,19 +1,21 @@
-%h1 Your Cart
-
-= form_for @order do |f|
-  .row
-    .col-sm-8
-      %table.table.order-table
-        %tr
-          %th{width: '15%'}
-          %th{width: '65%'} Name
-          %th{width: '15%'} Price
-          %th{width: '5%'} Qty
-        - @order.order_items.each do |order_item|
+.container-fluid
+  = form_for @order do |f|
+    .row
+      .col-sm-8.col-sm-offset-2
+        %h1.text-center Your Cart
+        %table.table.order-table
           %tr
-            %td= image_tag order_item.product.image.url(:thumb), class: 'img-responsive'
-            %td= order_item.product.title
-            %td= order_item.product.price
-            = f.fields_for :order_items, order_item do |i|
-              %td= i.text_field :quantity
-      = f.submit "Update Cart", class: 'btn btn-default'
+            %th{width: '10%'}
+            %th{width: '60%'} Item
+            %th{width: '15%'} How many?
+            %th{width: '15%'} Price
+          - @order.order_items.each do |order_item|
+            %tr
+              %td= image_tag order_item.product.image.url(:thumb), class: 'img-responsive'
+              %td= order_item.product.title
+              = f.fields_for :order_items, order_item do |i|
+                %td= i.text_field :quantity
+              %td= order_item.product.price
+
+        = f.submit "Empty Cart", name: 'empty_cart', class: 'btn btn-danger'
+        = f.submit "Update Cart", name: 'update_cart', class: 'btn btn-info'

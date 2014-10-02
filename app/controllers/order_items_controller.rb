@@ -4,7 +4,8 @@ class OrderItemsController < ApplicationController
     @order_item = @order.order_items.find_or_initialize_by(product_id: params[:product_id])
     @order_item.quantity += 1
     @order_item.save
-    redirect_to @order
+    flash[:success] = 'Item added to cart.'
+    redirect_to :back
   end
 
   private
