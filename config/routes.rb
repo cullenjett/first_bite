@@ -6,6 +6,9 @@ Rails.application.routes.draw do
   resources :categories, only: [:show]
 
   resources :orders, only: [:show, :update]
+  post '/submit_order', to: 'orders#submit'
+  get '/order_confirmation', to: 'orders#confirm'
+  
   resources :order_items, only: [:create, :update]
 
   resources :users, only: [:create]

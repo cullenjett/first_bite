@@ -5,7 +5,7 @@ class OrderItemsController < ApplicationController
     @order_item.quantity += 1
     @order_item.save
     flash[:success] = 'Item added to cart.'
-    redirect_to :back
+    redirect_to @order
   end
 
   private

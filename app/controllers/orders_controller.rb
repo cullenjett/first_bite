@@ -1,4 +1,7 @@
 class OrdersController < ApplicationController
+  before_action :require_order, only: [:submit]
+  before_action :require_user, only: [:submit]
+
   def show
     @order = Order.find(params[:id])
   end
@@ -16,6 +19,15 @@ class OrdersController < ApplicationController
       redirect_to root_path
     end
   end#update
+
+  def submit
+    if current_order.update(user: current_user)
+      redirect_to order_confirmation_path
+    else
+      flash[:error] = 'Oops, something went wrong. Your order did not submit.'
+      redirect_to :back
+    end
+  end
 
   private
 

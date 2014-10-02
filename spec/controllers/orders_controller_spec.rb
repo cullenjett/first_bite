@@ -63,7 +63,7 @@ RSpec.describe OrdersController, type: :controller do
         order = Order.create()
         order_item = OrderItem.create(product: product, order: order, quantity: 1)
         session[:order_id] = order.id
-        
+
         post :update, id: order.id, empty_cart: 'Empty Cart', order: {
           order_items_attributes: {
             '0' => { 'quantity' => '2', 'id' => product.id }
@@ -73,4 +73,48 @@ RSpec.describe OrdersController, type: :controller do
       end
     end
   end#POST update
+
+  describe 'POST submit' do
+    context 'user is not signed in' do
+      it 'redirects to the sign in page' do
+        order = Order.create(user: nil)
+        session[:order_id] = order.id
+        post :submit
+        expect(response).to redirect_to sign_in_path
+      end
+
+      it 'sets the flash[:info] message' do
+        order = Order.create(user: nil)
+        session[:order_id] = order.id
+        post :submit
+        expect(flash[:info]).to be_present
+      end
+
+      it 'does not allow a user without a cart to submit an order' do
+        post :submit
+        expect(response).to redirect_to root_path
+      end
+    end
+
+    context 'user is signed it' do
+      it 'redirects to the confirmation page' do
+        user = Fabricate(:user)
+        session[:user_id] = user.id
+        order = Order.create()
+        session[:order_id] = order.id
+        post :submit
+        expect(response).to redirect_to order_confirmation_path
+      end
+
+      it 'associates the order with the user' do
+        user = Fabricate(:user)
+        session[:user_id] = user.id
+        order = Order.create()
+        session[:order_id] = order.id
+        post :submit
+        user.reload
+        expect(user.orders.include?(order)).to be true
+      end
+    end
+  end
 end

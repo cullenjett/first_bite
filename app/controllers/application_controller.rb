@@ -21,4 +21,18 @@ class ApplicationController < ActionController::Base
     @order = Order.create(user: current_user, status: 'unsubmitted')
     session[:order_id] = @order.id
   end
+
+  def require_user
+    unless signed_in?
+      flash[:info] = "Sorry, you'll need to log in to continue."
+      redirect_to sign_in_path
+    end
+  end
+
+  def require_order
+    unless current_order
+      flash[:danger] = "You need some items in your cart to continue."
+      redirect_to root_path
+    end
+  end
 end
