@@ -17,7 +17,7 @@
         -else
           %li
             -# = button_to "Your Cart (0)", '#', class: 'btn btn-default navbar-btn'
-            %button.btn.btn-default.navbar-btn{href: "#"} Your Cart (0)
+            = link_to "Your Cart (0)", root_path
         - if signed_in?
           %li.dropdown
             %a.dropdown-toggle{"data-toggle" => "dropdown", href: "#"}
