@@ -13,6 +13,6 @@
     %header
       = render 'shared/navigation'
     %section.main-content
-      = render 'shared/messages'
-      = yield
-    %footer
+      .container
+        = render 'shared/messages'
+        = yield

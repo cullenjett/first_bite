@@ -1,33 +1,28 @@
-%nav.navbar.navbar-default{role: "navigation"}
-  .container-fluid
-    / Brand and toggle get grouped for better mobile display
-    .navbar-header
-      %button.navbar-toggle{"data-target" => "#bs-example-navbar-collapse-1", "data-toggle" => "collapse", type: "button"}
-        %span.sr-only Toggle navigation
-        %span.icon-bar
-        %span.icon-bar
-        %span.icon-bar
-      = link_to 'First Bite', root_path, class: 'navbar-brand'
-    / Collect the nav links, forms, and other content for toggling
-    #bs-example-navbar-collapse-1.collapse.navbar-collapse
+%nav.navbar.navbar-default
+  .container
+    .navbar-brand= link_to 'First Bite', root_path
+
+    -# - if current_order
+    -#   %ul.nav.navbar-nav
+    -#     %li
+    -#       = link_to "Your Cart (#{product_count(current_order)})", order_path(current_order), class: 'navbar-text'
+    -# -else
+    -#   %ul.nav.navbar-nav
+    -#     %li
+    -#       = link_to "Your Cart (0)", root_path
+
+    - if signed_in?
       %ul.nav.navbar-nav.navbar-right
-        - if current_order
-          %li
-            = link_to "Your Cart (#{product_count(current_order)})", order_path(current_order)
-        -else
-          %li
-            -# = button_to "Your Cart (0)", '#', class: 'btn btn-default navbar-btn'
-            = link_to "Your Cart (0)", root_path
-        - if signed_in?
-          %li.dropdown
-            %a.dropdown-toggle{"data-toggle" => "dropdown", href: "#"}
-              = "#{current_user.name}"
-              %b.caret
-            %ul.dropdown-menu
-              %li
-                = link_to 'Sign Out', sign_out_path
-        - else
-          %li
-            = link_to 'Register', register_path
-          %li
-            = button_to 'Sign In', sign_in_path, method: :get, class: 'navbar-btn btn btn-default'
+        %li.dropdown
+          %a.dropdown-toggle{"data-toggle" => "dropdown", href: "#"}
+            = "#{current_user.name}"
+            %b.caret
+          %ul.dropdown-menu
+            %li
+              = link_to 'Sign Out', sign_out_path
+    - else
+      %ul.nav.navbar-nav.navbar-right
+        %li
+          = link_to 'Register', register_path
+        %li
+          = button_to 'Sign In', sign_in_path, method: :get, class: 'navbar-btn btn btn-default'

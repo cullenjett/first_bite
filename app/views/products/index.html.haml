@@ -1,11 +1,8 @@
-.container-fluid
-  %ul.category-nav.well.text-center
-    %li= link_to 'Add New Product', new_product_path, class: 'btn btn-primary'
+.row
+  .col-sm-3.sidebar
+    = render 'shared/sidebar'
 
-    %li= link_to 'All', products_path, class: 'btn btn-warning'
-    - Category.all.each do |category|
-      %li= link_to category.title, category_path(category), class: 'btn btn-warning'
-
-  .products-containter
-    - @products.each do |product|
-      = render 'products/product', product: product
+  .col-sm-9
+    .products-containter
+      - @products.each do |product|
+        = render 'products/product', product: product

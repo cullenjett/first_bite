@@ -15,4 +15,63 @@
  *= require_self
  */
 
+@import "bootstrap-sprockets";
+@import 'bootstrap_overrides';
 @import 'bootstrap';
+
+// body {
+//   background: $black;
+//   color: $dark_blue;
+// }
+//
+// .panel {
+// background-color: $grey;
+// // color: white;
+// }
+//   .panel-footer {
+//     background: $grey;
+//   }
+//
+// .sidebar {
+//   .btn {
+//     color: $grey;
+//     background: lighten($black, 3%);
+//     border-color: $grey;
+//   }
+// }
+//
+// .btn-primary:hover {
+//   background: $blue;
+// }
+// .btn-info:hover {
+//   background-color: $light_blue;
+// }
+// .btn-success:hover {
+//   background-color: $neon_green;
+// }
+// .btn-danger:hover {
+//   background-color: $pink;
+// }
+// .btn-warning:hover {
+//   background-color: $yellow;
+// }
+//
+// .nav-pills {
+//   li {
+//     .btn-primary:hover {
+//       background: $blue;
+//     }
+//     .btn-info:hover {
+//       background-color: $light_blue;
+//     }
+//     .btn-success:hover {
+//       background-color: $neon_green;
+//     }
+//     .btn-danger:hover {
+//       background-color: $pink;
+//     }
+//     .btn-warning:hover {
+//       background-color: $yellow;
+//     }
+//   }
+// }
