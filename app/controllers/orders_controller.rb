@@ -29,6 +29,10 @@ class OrdersController < ApplicationController
     end
   end
 
+  def confirm
+
+  end
+
   private
 
   def update_order_item_quantities
