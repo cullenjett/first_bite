@@ -42,4 +42,8 @@ RSpec.describe UsersController, :type => :controller do
       end
     end
   end#POST create
+
+  describe 'GET orders' do
+    
+  end
 end

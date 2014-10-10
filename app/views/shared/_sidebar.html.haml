@@ -4,10 +4,10 @@
   .panel-body
     - if current_order
       %p= "You have #{product_count(current_order)} items in your cart."
-      .panel-footer
-        = link_to order_path(current_order), class: 'btn btn-default btn-block' do
+      .panel-footer.checkout-box
+        = link_to order_path(current_order), class: 'btn btn-default btn-block checkout-btn' do
           %span.glyphicon.glyphicon-shopping-cart
-          %span ($123.45)
+          %span Checkout ($123.45)
     - else
       %p Your cart is empty.
       %p Add some items from the right to get started.

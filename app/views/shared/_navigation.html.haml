@@ -2,15 +2,6 @@
   .container
     .navbar-brand= link_to 'First Bite', root_path
 
-    -# - if current_order
-    -#   %ul.nav.navbar-nav
-    -#     %li
-    -#       = link_to "Your Cart (#{product_count(current_order)})", order_path(current_order), class: 'navbar-text'
-    -# -else
-    -#   %ul.nav.navbar-nav
-    -#     %li
-    -#       = link_to "Your Cart (0)", root_path
-
     - if signed_in?
       %ul.nav.navbar-nav.navbar-right
         %li.dropdown
@@ -20,6 +11,8 @@
           %ul.dropdown-menu
             %li
               = link_to 'Sign Out', sign_out_path
+            %li
+              = link_to 'Order History', user_orders_path
     - else
       %ul.nav.navbar-nav.navbar-right
         %li

@@ -1,0 +1,11 @@
+%h1 Your orders
+- @user.orders.each do |order|
+  .panel.panel-default
+    .panel-heading
+      %h3= order.updated_at
+    .panel-body
+      %ul
+        - order.order_items.each do |order_item|
+          %li
+            = order_item.product.title
+            = "(#{order_item.quantity})"
