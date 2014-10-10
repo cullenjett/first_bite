@@ -11,7 +11,7 @@ Rails.application.routes.draw do
 
   resources :order_items, only: [:create, :update]
 
-  resource :user, only: [:create]
+  resources :users, only: [:create]
   get '/register', to: 'users#new'
   get '/orders', to: 'users#orders', as: 'user_orders'
 

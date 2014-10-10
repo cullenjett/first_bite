@@ -2,7 +2,7 @@ require 'rails_helper'
 require 'capybara/rails'
 
 feature 'user registers a new account' do
-  scenario 'register with an empty shopping cart' do
+  scenario 'with an empty shopping cart' do
     visit root_path
     register_new_user
     expect(current_path).to eq(products_path)
