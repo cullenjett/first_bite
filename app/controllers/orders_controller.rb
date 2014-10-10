@@ -21,7 +21,7 @@ class OrdersController < ApplicationController
   end#update
 
   def submit
-    if current_order.update(user: current_user)
+    if current_order.update(user: current_user, status: 'submitted')
       redirect_to order_confirmation_path
     else
       flash[:error] = 'Oops, something went wrong. Your order did not submit.'

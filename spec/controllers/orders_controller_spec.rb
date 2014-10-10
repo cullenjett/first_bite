@@ -75,7 +75,7 @@ RSpec.describe OrdersController, type: :controller do
   end#POST update
 
   describe 'POST submit' do
-    context 'user is not signed in' do
+    context 'when user is not signed in' do
       it 'redirects to the sign in page' do
         order = Order.create(user: nil)
         session[:order_id] = order.id
@@ -96,7 +96,7 @@ RSpec.describe OrdersController, type: :controller do
       end
     end
 
-    context 'user is signed it' do
+    context 'when user is signed it' do
       it 'redirects to the confirmation page' do
         user = Fabricate(:user)
         session[:user_id] = user.id
@@ -114,6 +114,16 @@ RSpec.describe OrdersController, type: :controller do
         post :submit
         user.reload
         expect(user.orders.include?(order)).to be true
+      end
+
+      it 'updates the order status to submitted' do
+        user = Fabricate(:user)
+        session[:user_id] = user.id
+        order = Order.create()
+        session[:order_id] = order.id
+        post :submit
+        order.reload
+        expect(order.status).to eq('submitted')
       end
     end
   end
