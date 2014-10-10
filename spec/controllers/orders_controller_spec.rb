@@ -125,6 +125,15 @@ RSpec.describe OrdersController, type: :controller do
         order.reload
         expect(order.status).to eq('submitted')
       end
+
+      it 'sets the sesison[:order_id] to nil' do
+        user = Fabricate(:user)
+        session[:user_id] = user.id
+        order = Order.create()
+        session[:order_id] = order.id
+        post :submit
+        expect(session[:order_id]).to be nil
+      end
     end
   end
 end

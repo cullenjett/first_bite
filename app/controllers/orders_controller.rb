@@ -22,6 +22,7 @@ class OrdersController < ApplicationController
 
   def submit
     if current_order.update(user: current_user, status: 'submitted')
+      session[:order_id] = nil
       redirect_to order_confirmation_path
     else
       flash[:error] = 'Oops, something went wrong. Your order did not submit.'
