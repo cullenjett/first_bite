@@ -7,7 +7,7 @@
       .panel-footer.checkout-box
         = link_to order_path(current_order), class: 'btn btn-default btn-block checkout-btn' do
           %span.glyphicon.glyphicon-shopping-cart
-          %span Checkout ($123.45)
+          %span= "Checkout (#{print_price(current_order.total)})"
     - else
       %p Your cart is empty.
       %p Add some items from the right to get started.

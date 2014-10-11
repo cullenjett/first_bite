@@ -4,4 +4,12 @@ class Order < ActiveRecord::Base
   belongs_to :user
 
   accepts_nested_attributes_for :order_items
+
+  def total
+    subtotals = []
+    order_items.each do |item|
+      subtotals << item.subtotal
+    end
+    subtotals.inject(&:+)
+  end
 end#Order
