@@ -27,4 +27,6 @@
 
         = f.submit "Empty Cart", name: 'empty_cart', class: 'btn btn-danger'
         = f.submit "Update Cart", name: 'update_cart', class: 'btn btn-info'
-  = button_to "Submit Order", submit_order_path, class: 'btn btn-success submit-order-button'
+  .row
+    .col-sm-8.col-sm-offset-2
+      = button_to "Submit Order", submit_order_path, class: 'btn btn-success submit-order-button'
