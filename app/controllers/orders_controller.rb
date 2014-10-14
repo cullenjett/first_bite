@@ -31,7 +31,6 @@ class OrdersController < ApplicationController
   end
 
   def confirm
-
   end
 
   private

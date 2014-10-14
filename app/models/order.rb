@@ -5,6 +5,8 @@ class Order < ActiveRecord::Base
 
   accepts_nested_attributes_for :order_items
 
+  scope :sort_desc, -> { order('updated_at DESC') }
+
   def total
     subtotals = []
     order_items.each do |item|

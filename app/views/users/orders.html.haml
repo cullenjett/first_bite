@@ -1,11 +1,26 @@
 %h1 Your orders
-- @user.orders.each do |order|
-  .panel.panel-default
-    .panel-heading
-      %h3= order.updated_at
-    .panel-body
-      %ul
-        - order.order_items.each do |order_item|
-          %li
-            = order_item.product.title
-            = "(#{order_item.quantity})"
+.row
+  - @user.orders.sort_desc.each do |order|
+    .col-sm-6
+      .panel.panel-default
+        .panel-heading
+          %h3= format_date(order.updated_at)
+          %p.status= order.status
+        .panel-body
+          %table.table.table-striped.order-table
+            %tr
+              %th{width: '50%'} Item
+              %th{width: '15%'} How many?
+              %th{width: '15%'} Price
+              %th{width: '10%'} Subtotal
+            - order.order_items.each do |order_item|
+              %tr
+                %td= order_item.product.title
+                %td= order_item.quantity
+                %td= order_item.product.price
+                %td= print_price(order_item.subtotal)
+            %tr
+              %td
+              %td
+              %td Total:
+              %td= print_price(order.total)

@@ -10,4 +10,8 @@ module OrdersHelper
       0
     end
   end
+
+  def format_date(date)
+    date.strftime('%a, %B %e, %Y')
+  end
 end
